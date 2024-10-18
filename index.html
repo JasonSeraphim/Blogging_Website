@@ -11,7 +11,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            scroll-behavior: smooth; /* Smooth scrolling for page navigation */
+            scroll-behavior: smooth;
         }
 
         header {
@@ -133,7 +133,7 @@
             padding: 100px 20px;
             background-color: #ff6347;
             color: white;
-            animation: fadeIn 1.5s ease-out; /* Adding fade-in animation */
+            animation: fadeIn 1.5s ease-out;
         }
 
         @keyframes fadeIn {
@@ -172,7 +172,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
-            animation: slideUp 1s ease-in-out; /* Slide-up animation */
+            animation: slideUp 1s ease-in-out;
         }
 
         @keyframes slideUp {
@@ -213,7 +213,7 @@
         .resume-section {
             text-align: center;
             padding: 20px;
-            animation: slideUp 1s ease-in-out; /* Slide-up animation */
+            animation: slideUp 1s ease-in-out;
         }
 
         .resume-link-btn {
@@ -246,7 +246,7 @@
             border-radius: 50%;
             font-size: 2rem;
             cursor: pointer;
-            animation: bounce 1.5s infinite; /* Adding bounce animation */
+            animation: bounce 1.5s infinite;
         }
 
         @keyframes bounce {
@@ -287,7 +287,7 @@
             height: 100%;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             overflow-y: auto;
-            animation: fadeIn 0.5s ease-out; /* Fade-in animation for modal */
+            animation: fadeIn 0.5s ease-out;
         }
 
         .modal-content h2 {
@@ -309,7 +309,8 @@
         }
 
         .modal-content input[type="text"],
-        .modal-content textarea {
+        .modal-content textarea,
+        .modal-content input[type="file"] {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
@@ -381,122 +382,93 @@
         <h1>My Blog & Resume</h1>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#blogs">Blogs</a></li>
-                <li><a href="#resume">Resume</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Resume</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Welcome to My Personal Blog and Resume Website</h1>
+        <button class="cta-btn" onclick="document.querySelector('.modal').style.display = 'flex';">Feel like writing something +</button>
+    </section>
+
     <!-- About Section -->
-    <section id="about" class="about-section">
+    <section class="about-section">
         <div class="image-frame">
-            <img src="alina.png" alt="About Me">
+            <img src="alina.png" alt="Your Image">
         </div>
         <div class="about-content">
             <h2>About Me</h2>
-            <p>Hey ! i am Alina Vinayak from Christ (Deemed to be University) studying currently in 3rd year BBA, as a part of my CIA this website is dedicated to my blogs and resume.</p>
-        </div>
-    </section>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-        <div>
-            <h2>Welcome to My Space</h2>
-            <p>Explore my blogs and resume to learn more about my work.</p>
-            <button class="cta-btn">Learn More</button>
+            <p>Hi! I am Alina Vinayak from 3rd Year BBA at Christ (Deemed to be University) - Pune, Lavasa Campus, Hub of Analytics. As a part of my CIA 3 this website is solely dedicated to my blogs and resume. Thank You for visiting.</p>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blogs">
+    <section>
         <h2 class="section-title">My Blogs</h2>
         <div class="blog-grid">
-            <!-- Blog posts will be appended here -->
+            <div class="blog-post">
+                <div class="blog-content">
+                    <h3>Blog Title 1</h3>
+                    <p>Brief description of the blog content goes here.</p>
+                    <button class="delete-btn">Delete Blog</button>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-content">
+                    <h3>Blog Title 2</h3>
+                    <p>Brief description of the blog content goes here.</p>
+                    <button class="delete-btn">Delete Blog</button>
+                </div>
+            </div>
+            <!-- Add more blog posts as needed -->
         </div>
-        <button class="write-blog-btn" id="open-modal-btn">Feel like writing something +</button>
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" class="resume-section">
-        <h2 class="section-title">My Resume</h2>
-        <button class="resume-link-btn" onclick="deleteResume()">Download Resume</button>
+    <section class="resume-section">
+        <h2>Resume</h2>
+        <button class="resume-link-btn" onclick="document.querySelector('.modal').style.display = 'flex';">Upload Resume</button>
     </section>
 
-    <!-- Modal for adding new blog -->
-    <div id="modal" class="modal">
+    <!-- Add Blog Modal -->
+    <div class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <span class="close-btn" onclick="document.querySelector('.modal').style.display = 'none';">&times;</span>
             <h2>Add New Blog</h2>
             <form id="add-blog-form">
-                <label for="blog-title">Blog Title</label>
-                <input type="text" id="blog-title" name="blog-title" required>
+                <label for="blog-title">Blog Title:</label>
+                <input type="text" id="blog-title" name="blog-title" placeholder="Enter blog title">
 
-                <label for="blog-content">Blog Content</label>
-                <textarea id="blog-content" name="blog-content" rows="10" required></textarea>
+                <label for="blog-description">Blog Description:</label>
+                <textarea id="blog-description" name="blog-description" rows="5" placeholder="Write your blog description"></textarea>
 
-                <button type="submit">Add Blog</button>
+                <label for="upload-resume">Upload Resume:</label>
+                <input type="file" id="upload-resume" name="upload-resume">
+
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>
 
-    <!-- Floating button for adding new blog -->
-    <button class="add-btn" id="open-modal-btn">+</button>
+    <!-- Add Blog Button -->
+    <button class="add-btn" onclick="document.querySelector('.modal').style.display = 'flex';">+</button>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 My Blog & Resume Website</p>
+        <p>&copy; 2024 My Blog & Resume | All rights reserved</p>
     </footer>
 
     <script>
-        // Open modal for adding blog
-        const modal = document.getElementById('modal');
-        const openModalBtn = document.getElementById('open-modal-btn');
-
-        openModalBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
+        // Close modal on form submit
+        document.getElementById('add-blog-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.querySelector('.modal').style.display = 'none';
         });
-
-        // Close modal
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        // Handle blog form submission
-        document.getElementById('add-blog-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const blogTitle = document.getElementById('blog-title').value;
-            const blogContent = document.getElementById('blog-content').value;
-
-            // Add the new blog to the blog grid
-            const blogGrid = document.querySelector('.blog-grid');
-            const newBlog = document.createElement('article');
-            newBlog.classList.add('blog-post');
-
-            newBlog.innerHTML = `
-                <div class="blog-content">
-                    <h3>${blogTitle}</h3>
-                    <p>${blogContent}</p>
-                    <button class="delete-btn" onclick="deleteBlog(this)">Delete Blog</button>
-                </div>
-            `;
-            blogGrid.appendChild(newBlog);
-
-            // Clear form fields and close the modal
-            document.getElementById('add-blog-form').reset();
-            closeModal();
-        });
-
-        // Delete a blog post
-        function deleteBlog(button) {
-            const blogPost = button.closest('.blog-post');
-            blogPost.remove();
-        }
-
-        // Delete resume (for demo purposes)
-        function deleteResume() {
-            alert("Resume deleted (demo).");
-        }
     </script>
 </body>
 </html>
